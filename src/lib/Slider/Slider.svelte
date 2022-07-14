@@ -6,14 +6,16 @@
 
 	function handleOnChange(event: any) {
 		sliderValue = event.target.value;
+        console.log(sliderValue)
+
 	}
 </script>
 
 <div class="slider-container" bind:clientWidth={barWidth}>
-	<div style="width:{sliderValue - 0.5}%; background-color:{fillColor};" class="slider-fill" />
+	<div style="width:{sliderValue == 0 ? 0 : sliderValue - 0.5}%; background-color:{fillColor};" class="slider-fill" />
 	<input
 		type="range"
-		min="1"
+		min="0"
 		step="0.01"
 		max="100"
 		value="50"
