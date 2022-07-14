@@ -3,7 +3,7 @@
 
 	export let title: string = 'Click';
 
-	export let buttonColor: string = 'blue';
+	export let buttonColor: string = 'green';
 
 	export let leftIcon: SvelteComponentTyped | null = null;
 	export let leftIconSize: number = 16;
@@ -15,6 +15,10 @@
 
 
 </script>
+
+<svelte:head>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+</svelte:head>
 
 <div style="background-color: {buttonColor}" class="button">
 	{#if leftIcon}
