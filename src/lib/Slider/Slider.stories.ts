@@ -1,13 +1,9 @@
 import Slider from './Slider.svelte';
 
-import {Home} from 'tabler-icons-svelte'
-
 export default {
 	title: 'Components/Slider',
 	component: Slider,
-    argTypes: {
-    
-      },
+	argTypes: {}
 };
 
 const Template = (args: any) => ({
@@ -18,12 +14,11 @@ const Template = (args: any) => ({
 	}
 });
 
-
 export const Primary = Template.bind({});
 
 //@ts-ignore
 Primary.args = {
-sliderValue:50,
-fillColor:'yellow'
+	sliderValue: 50,
+	fillColor: 'yellow',
+	onInput: (value: string) => {}
 };
-

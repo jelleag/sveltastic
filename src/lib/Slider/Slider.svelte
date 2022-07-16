@@ -2,17 +2,17 @@
 	export let sliderValue: number = 50;
     export let fillColor: string = 'green';
 
+    export let onInput: (value: number) => void = (value: number) => {}
+
 	let barWidth: number;
 
 	function handleOnChange(event: any) {
 		sliderValue = event.target.value;
-        console.log(sliderValue)
-
+        onInput(sliderValue)
 	}
 </script>
 
-<div class="slider-container" bind:clientWidth={barWidth}>
-	<div style="width:{sliderValue == 0 ? 0 : sliderValue - 0.5}%; background-color:{fillColor};" class="slider-fill" />
+<div style="--theme-color: {fillColor}; --fill-value:{sliderValue}%;" class="slider-container" bind:clientWidth={barWidth}>
 	<input
 		type="range"
 		min="0"
@@ -35,13 +35,18 @@
 		border-radius: 4px;
 		outline: none; /* Remove outline */
 	}
-	.slider-fill {
-		background-color: black;
-		height: 10px;
-		border-radius: 4px;
-		width: 50%;
-		position: absolute;
-	}
+    .slider-container:after {
+border-top-left-radius: 4px;;
+border-bottom-left-radius: 4px;;
+
+    content: '\A';
+    position: absolute;
+    background: var(--theme-color);
+    top: 0; bottom: 0;
+    left: 0; 
+    width: var(--fill-value); /* Specify the width.. */
+}
+
 	.slider {
 		-webkit-appearance: none; /* Override default CSS styles */
 		appearance: none;
@@ -64,8 +69,8 @@
 	.slider::-webkit-slider-thumb {
 		-webkit-appearance: none; /* Override default look */
 		appearance: none;
-		width: 16px; /* Set a specific slider handle width */
-		height: 16px; /* Slider handle height */
+		width: 20px; /* Set a specific slider handle width */
+		height: 20px; /* Slider handle height */
 		background: white; /* Green background */
 		cursor: pointer; /* Cursor on hover */
 		border-radius: 4px;
